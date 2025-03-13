@@ -1,9 +1,4 @@
-use axum::{
-    extract::Multipart,
-    response::Html,
-    routing::get,
-    Router,
-};
+use axum::{Router, extract::Multipart, response::Html, routing::get};
 
 use std::{fs::File, io::Write};
 
@@ -33,7 +28,7 @@ async fn upload(mut multipart: Multipart) {
         if field.name().unwrap() != "fileupload" {
             continue;
         }
-     
+
         let file_name = field.file_name().unwrap();
 
         let file_path = format!("files/{}", file_name);
